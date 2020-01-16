@@ -47,6 +47,8 @@ STDIN_FILE_DESCRIPTOR="0"
 # Set by web/app.rb
 # STRAP_GIT_NAME=
 # STRAP_GIT_EMAIL=
+# STRAP_LOST_NAME=
+# STRAP_LOST_EMAIL=
 # STRAP_GITHUB_USER=
 # STRAP_GITHUB_TOKEN=
 # CUSTOM_HOMEBREW_TAP=
@@ -163,8 +165,8 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 sudo_askpass defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 sudo_askpass launchctl load /System/Library/LaunchDaemons/com.apple.alf.agent.plist 2>/dev/null
 
-if [ -n "$STRAP_GIT_NAME" ] && [ -n "$STRAP_GIT_EMAIL" ]; then
-  LOGIN_TEXT=$(escape "Found this computer? Please contact $STRAP_GIT_NAME at $STRAP_GIT_EMAIL.")
+if [ -n "$STRAP_LOST_NAME" ] && [ -n "$STRAP_LOST_EMAIL" ]; then
+  LOGIN_TEXT=$(escape "Found this computer? Please contact $STRAP_LOST_NAME at $STRAP_LOST_EMAIL.")
   echo "$LOGIN_TEXT" | grep -q '[()]' && LOGIN_TEXT="'$LOGIN_TEXT'"
   sudo_askpass defaults write /Library/Preferences/com.apple.loginwindow \
     LoginwindowText \
